@@ -1,4 +1,4 @@
-import make_account
+import Account
 import numpy as np
 
 #random match can be the default/ackup if the algorithm fails or doesnt return anything
