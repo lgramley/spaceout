@@ -10,18 +10,12 @@ class ManageGeneral:
         self.account_db = AccountDatabase()
 
     def make_account(self, username, password, full_name, about, contact, past_projects):
-        account = Account()
+        account = Account(username, password, full_name, about, contact, past_projects)
 
-        while username in self.account_db.usernames:
-            print("That username is not available. Please enter a new username.")
-        account.username = username 
+        # while username in self.account_db.usernames:
+        #     print("That username is not available. Please enter a new username.")
+
         self.account_db.usernames[username] = account
-        account.password = password
-        account.full_name = full_name
-        account.about_me = about
-        account.contact = contact
-        account.past_projects = past_projects
-
         self.account_db.add_account(account)
 
         return account

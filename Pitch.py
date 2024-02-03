@@ -1,7 +1,7 @@
 class Pitch:
-    def __init__(self): # any args?
-        self.title = ""
-        self.blurb = ""
+    def __init__(self, title, blurb): # any args?
+        self.title = title
+        self.blurb = blurb
         self.account = None
         # image?
         self.likes = 0

@@ -3,26 +3,20 @@
 from Pitch import Pitch
 
 class Account:
-    def __init__(self): # any args?
-        self.username = ""
-        self.password = ""
-        self.full_name = ""
-        self.contact = None
-        self.past_projects = None
-        self.about_me = None 
+    def __init__(self, username, password, full_name, contact, past_projects, about_me): # any args?
+        self.username = username
+        self.password = password
+        self.full_name = full_name
+        self.contact = contact
+        self.past_projects = past_projects
+        self.about_me = about_me
         
         self.my_pitches = [] # have make pitch function 
 
         self.liked_pitches = [] #pitches you have liked 
         
-    def create_pitch(self):
-        pitch = Pitch()
-
-        title = input("Title:")
-        pitch.title = title
-
-        blurb = input("Blurb:")
-        pitch.blurb = blurb
+    def create_pitch(self, title, blurb):
+        pitch = Pitch(title, blurb)
 
         pitch.account = self
         self.my_pitches.append(pitch)

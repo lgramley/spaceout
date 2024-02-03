@@ -2,73 +2,66 @@ from Account import Account
 from Pitch import Pitch
 from Database import PitchDatabase, AccountDatabase
 import numpy as np
+from Manage import ManageGeneral
 
-user1 = Account()
-user1.username = "user1"
-user1.password = "1234"
-user1.full_name = "User One"
-user1.contact = "123-456-7890"
-user1.past_projects = "front end"
-user1.about_me = "I like frogs"
+manager = ManageGeneral()
 
-user2 = Account()
-user2.username = "user2"
-user2.password = "5678"
-user2.full_name = "User Two"
-user2.contact = "u2@email.com"
-user2.past_projects = "full stack"
-user2.about_me = "I like mustaches"
+user1 = Account("user1", "1234", "User One", "123-456-7890", "front end", "I like frogs")
 
-user3 = Account()
-user3.username = "user3"
-user3.password = "password"
-user3.full_name = "User Three"
-user3.contact = ""
-user3.past_projects = "none"
-user3.about_me = "I am creative"
+user2 = Account("user2", "5678", "User Two", "u2@email.com", "full stack", "I like mustaches")
 
-user4 = Account()
-user4.username = "user4"
-user4.password = "password343"
-user4.full_name = "User Four"
-user4.contact = ""
-user4.past_projects = ""
-user4.about_me = ""
+user3 = Account("user3", "password", "User Three", "", "none", "I am creative")
 
-account_db = AccountDatabase()
-account_db.accounts = [user1, user2, user3]
-account_db.usernames = {"user1": user1, "user2": user2, "user3": user3}
+user4 = Account("user4", "password343", "User Four", "", "", "")
 
-pitch1 = Pitch()
-pitch1.title = "Pitch One"
-pitch1.blurb = "this is a really creative pitch"
+manager.account_db.accounts = [user1, user2, user3, user4]
+manager.account_db.usernames = {"user1": user1, "user2": user2, "user3": user3, "user4": user4}
+
+pitch1 = Pitch("Pitch One", "this is a really creative pitch")
 pitch1.account = user1
 
-pitch2 = Pitch()
-pitch2.title = "Pitch Two"
-pitch2.blurb = "this is a really smart pitch"
+pitch2 = Pitch("Pitch Two", "this is a really smart pitch")
 pitch2.account = user3
 
-pitch3 = Pitch()
-pitch3.title = "Pitch Three"
-pitch3.blurb = "PITCH"
+pitch3 = Pitch("Pitch Three","PITCH")
 pitch3.account = user3
 
-pitch4 = Pitch()
-pitch4.title = "Pitch Four"
-pitch4.blurb = "this is another pitch"
+pitch4 = Pitch("Pitch Four", "this is another pitch")
 pitch4.account = user2
 
-pitch_db = PitchDatabase()
-pitch_db.pitches = [pitch1, pitch2, pitch3, pitch4]
+manager.pitch_db.pitches = [pitch1, pitch2, pitch3, pitch4]
 
 user1.my_pitches = [pitch1]
 user2.my_pitches = [pitch4]
 user3.my_pitches = [pitch2, pitch3]
 
+print(manager.account_db.accounts)
+print(manager.account_db.usernames)
+print(manager.pitch_db.pitches)
+
+pitch5 = user1.create_pitch("Pitch 5", "blurb blurb blurb")
+pitch6 = user2.create_pitch("Pitch 6", "words")
+pitch7 = user3.create_pitch("Pitch 7", "info")
+pitch8 = user4.create_pitch("Pitch 8", "stuff")
+pitch9 = user4.create_pitch("Pitch 9", "wowowowowo")
+pitch0 = user2.create_pitch("Pitch 0", "sfjdosdhff")
+pitch10 = user3.create_pitch("Pitch 10", "sfegsegs")
+
+manager.pitch_db.pitches.extend([pitch5, pitch6, pitch7, pitch8, pitch9, pitch0, pitch10])
+
+user5 = manager.make_account("user5", "73234567", "User Five", "me", "", "")
+user6 = manager.make_account("user6", "afesas", "User Six", "", "34567832", "")
+user7 = manager.make_account("user7", "adfew", "User Seven", "me", "", "")
+user8 = manager.make_account("user8", "65224", "User Eight", "me", "", "")
+user9 = manager.make_account("user9", "1232456", "User Nine", "me", "", "")
+
+print(manager.account_db.accounts)
+print(manager.account_db.usernames)
+print(manager.pitch_db.pitches)
+
 def random_match(account):
     
-    random_pitch = np.random.choice(pitch_db.pitches)
+    random_pitch = np.random.choice(manager.pitch_db.pitches)
 
     return random_pitch
 
