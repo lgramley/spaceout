@@ -22,6 +22,8 @@ class ManageGeneral:
         account.contact = contact
         account.past_projects = past_projects
 
+        self.account_db.add_account(account)
+
         return account
 
     def sign_in(self, username, password):
@@ -48,15 +50,24 @@ if __name__ == "__main__":
         password = input("Please enter a password:\n")
         account = manager.sign_in(username, password)
     elif prompt.lower() == "create an account":
-        account = manager.make_account()
+        username = input("Please enter a username:\n")
+        password = input("Please enter a password:\n")
+        full_name = input("Please enter your full name:\n")
+        about = input("Please enter a blurb about yourself:\n")
+        contact = input("Please enter your contact information:\n")
+        past_projects = input("Please enter your past projects:\n")
+
+        account = manager.make_account(username, password, full_name, about, contact, past_projects)
     else: 
         print("not recognized")
 
     while True:
+        #clear term? 
         prompt = input("Welcome to your Account! Type c to create a pitch or b to browse pitches:\n")
 
         if prompt == "c":
-            account.create_pitch()
+            pitch = account.create_pitch()
+            manager.pitch_db.add_pitch(pitch)
         elif prompt == "b": 
             while True:
                 p = np.random.choice(manager.pitch_db.pitches)

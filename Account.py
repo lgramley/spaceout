@@ -26,4 +26,7 @@ class Account:
 
         pitch.account = self
         self.my_pitches.append(pitch)
+
+        return pitch
+
     

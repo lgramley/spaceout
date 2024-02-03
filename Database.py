@@ -15,7 +15,7 @@ class AccountDatabase:
     
     def add_account(self, account):
         self.accounts.append(account)
-        self.usernames[account.username] = self.account
+        self.usernames[account.username] = account
     
     def delete_account(self, account):
         self.accounts.remove(account)
