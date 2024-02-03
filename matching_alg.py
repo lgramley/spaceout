@@ -1,48 +1,46 @@
 import numpy as np
-import pandas as pd
-import make_account
-import make_pitch
-
-#want a getter to get all accounts
-#want a getter to get all pitches
-#populate these into a dictionary
-
+from Account import Account
+from Pitch import Pitch
+from Database import PitchDatabase, AccountDatabase
+import random
 
 #Gale-Shapely algorithm::
 
-#initialization:
+account_db = AccountDatabase()
+pitch_db = PitchDatabase()
 
-# #dataframe for accounts
-# accounts = pd.DataFrame(getAccounts())
-# accounts.index = []
-
-# #dataframe for pitches
-# pitches = pd.DataFrame(getPitches())
-# pitches.index = []
-
-accounts = [getAccounts()] #populates these/call on something
-pitches = [getPitches()] #populates these/call on something
+accounts =  account_db.accounts #populates these/call on something
+pitches =  pitch_db.pitches #populates these/call on something
 
 #preference creation
 
 #creators that pitches prefer: (M)
 pitch_pref = {} #populate this key: pitch, value: list of creators the pitcher likes
+for pitch in pitches:
+    shuffled_accounts = random.shuffle(accounts)
+    pitch_pref[pitch] = shuffled_accounts #randomize order of accounts
 
 #pitches that creators prefer: (W) / for accounts looking to create
-creator_pref = {} #populate this key: creator, Value: list of pitches that creator likes
+account_pref = {} #populate this key: creator, Value: list of pitches that creator likes
+for creator in account_pref:
+    shuffled_pitches = random.shuffle(pitches)
+    account_pref[creator] = shuffled_pitches #randomize order of pitches
 
 def match_alg():
     #Gale-Shapely
 
     #self.taken = False or True --> all initialized to False
     free_pitches = []
-    free_creators = []
-    #maybe just start with all creators and pitchers
-    for creator in accounts: #techincally pitches are parts of accounts
-        if not creator.taken:
-            free_creators.append(creator)
+    #I think once pitches are claimed they go away but accounts always stay visible until removed from the app
+
+
+    # free_account = []
+    # #maybe just start with all creators and pitchers
+    # for account in accounts: #techincally pitches are parts of accounts
+    #     if not account.taken:
+    #         free_account.append(creator)
     for pitch in pitches:
-        if not creator.taken:
+        if not pitch.taken:
             free_pitches.append(pitch)
 
     matches = {} #will add to this as we populate dict
@@ -54,26 +52,21 @@ def match_alg():
             for creator in pitch_pref[pitch]:
                 if creator not in list(matches.values()):
                     matches[pitch] = creator
-                    free_creators.remove(creator)
+                    # free_account.remove(creator)
                     break
                 elif creator in list(matches.values()):
                     current_potential_match = list(matches.keys())[list(matches.values()).index(creator)] #?? --> need to index these
-                    creator_list = creator_pref.get(creator)
+                    creator_list = account_pref.get(creator)
                     if creator_list.index(pitch) < creator_list.index(current_potential_match):#entries seem to be indexed could probably weight indeces
                         matches[pitch] = creator
                         free_pitches.remove(pitch)
                         matches[current_potential_match] = ''
                         free_pitches.append(current_potential_match)
+    
+    return matches
 
 
-#---------------------------------------------------------------
-#check if account is a match --> move somewhere else later
-def isMatch(account, pitch):
-    pass
 
-#gets info from pitch for account if account is a match
-def getInfo(account, pitch):
-    pass
 
 
 
