@@ -225,8 +225,8 @@
             </section>
 
             <section id="favorites">
-                <div class="section-inner">
-                    <h2>Your Liked Projects!</h2>
+                <div class="section-inner" style="display:flex">
+                    <!-- <h2>Your Liked Projects!</h2> -->
             </section>
 
             <section id="profile">
@@ -278,7 +278,7 @@
                 function cloneWithoutButtons(element) {
                     const clone = element.cloneNode(true);
                     const buttons = clone.querySelectorAll('.launch-button, .crash-button');
-                    
+                    clone.classList.add('cloned-profile');
                     buttons.forEach(button => {
                         button.parentNode.removeChild(button);
                     });

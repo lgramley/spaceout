@@ -302,3 +302,6 @@ header a {
     margin: 5px 10px 0 0;
     /* Add any other styles you want for the shrunk container */
 }
+.cloned-profile {
+    margin-left: 10px; /* Add bottom margin to the cloned profile */
+}
