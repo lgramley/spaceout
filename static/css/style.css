@@ -253,6 +253,15 @@ header a {
     align-items: center;
 }
 
+.outer-box-two {
+    width: 300px;
+    height: 500px; 
+    background-color: #9493ee; 
+    color: #9493ee;
+    padding: 30px; 
+    border-radius: 10px;
+}
+
 .big-inner-box {
     width: 85%; 
     height: 20%; 
@@ -260,6 +269,7 @@ header a {
     border-radius: 10px;
     padding: 20px;
     overflow: scroll;
+    margin-top:20px;
 }
 
 .small-inner-box {
