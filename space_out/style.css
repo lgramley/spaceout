@@ -66,6 +66,10 @@ section {
     place-items: left;
 }
 
+#explore astronaut-avatar {
+    object-position: 50px 30px;
+}
+
 footer {
     text-align: center;
     padding: 20px;
@@ -91,7 +95,10 @@ section h2 {
 section h3 {
     font-size: 1.5em;
     color:antiquewhite;
+    text-align: right;
 }
+
+
 
 header a {
     text-decoration: none;
@@ -99,24 +106,25 @@ header a {
 }
 
 #hero {
-    background-image: linear-gradient(rgba(22, 0, 74, 0.75),rgba(167, 130, 255, 0.75)), url('homeBackground.png');
+    background-image: linear-gradient(rgba(22, 0, 74, 0.75),rgba(167, 130, 255, 0.75)), url('Photos/homeBackground.png');
     margin-top:-140px;
     margin-bottom: 0%;
     
 }
 
 
-
 #about {
-    background-image: linear-gradient(rgba(167, 130, 255, 0.75),rgba(17, 0, 94, 0.75)), url('background2.jpeg')
+    background-image: linear-gradient(rgba(167, 130, 255, 0.75),rgba(17, 0, 94, 0.75)), url('Photos/background2.jpeg')
     ;
     padding: 60px;
 }
 
 #explore {
-    background-image: linear-gradient(rgba(17, 0, 94, 0.75),rgba(255,255,255,0.75)), url('background3.webp');
+    background-image: linear-gradient(rgba(17, 0, 94, 0.75),rgba(255,255,255,0.75)), url('Photos/background3.webp');
 }
 
+/* font
+ */
 .cabin-condensed-regular {
     font-family: "Cabin Condensed", sans-serif;
     font-weight: 400;
@@ -141,11 +149,14 @@ header a {
     font-style: normal;
   }
 
+/* grid container and column settings
+ */
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 50px;
-    padding-top: 20px;
+    margin-top:20px;
 }
 
 .text-column {
@@ -176,6 +187,8 @@ header a {
     height: auto;
 }
 
+/* button
+ */
 .rounded-button {
     padding: 10px 20px; 
     border: none;
@@ -190,4 +203,46 @@ header a {
 
 .rounded-button:hover {
     background-color: #2980b9;
+}
+
+
+/* boxes for exploration page
+ */
+.outer-box {
+    width: 300px;
+    height: 700px; 
+    background-color: #25245D; 
+    color: #25245D;
+    padding: 30px; 
+    border-radius: 10px;
+}
+
+.big-inner-box {
+    width: 85%; 
+    height: 20%; 
+    background-color: #fff; 
+    border-radius: 10px;
+    padding: 20px;
+    
+}
+
+.small-inner-box {
+    width: 85%; 
+    height: 7%; 
+    background-color: #fff; 
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.container {
+    display: flex; /* Use flexbox for layout */
+    align-items: left; /* Center items vertically */
+}
+
+/* Style for the image */
+.container img {
+    width: 100px; /* Adjust the width of the image as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some spacing between image and text */
 }
