@@ -6,30 +6,37 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Text and Image Grid</title>
         <style>
           body {
             font-family: 'Ubuntu Mono';
           }
         </style>
+        <title>Box Inside a Box</title>
     </head>
 
     <body>
         <header>
             <img src="{{url_for('static', filename='images/spaceOutIcon.png')}}" class="logo-img">
             <nav>
+                <h1><li><a href="#hero">Space Out!</a></li></h1>
                 <ul>
-                  <h1>Space Out!</h1>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#explore">Explore</a></li>
-                    <li><a href="#profile">Profile</a></li>
+                    <div class ="nav-right">
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#explore">explore</a></li>
+                        <li><a href="#messages">messages</a></li>
+                        <li><a href="#rockets">my rockets</a></li>
+                        <li><a href="#favorites">my stars</a></li>
+                    </div>
                 </ul>
             </nav>
         </header>
         <main>
             <section id="hero">
                 <div class="logoImage">
-                  <img src="{{url_for('static', filename='images/spaceOutIcon.png')}}" class="logo-img">
+                    <img src="{{url_for('static', filename='images/spaceOutIcon.png')}}" class="logo-img">
                 </div>
                 <div class="section-inner">
                     <p style="text-align:left;">Meet people to turn your daydream</p>
@@ -40,64 +47,212 @@
             <section id="about">
                 <div class="section-inner">
                     <h2>About</h2>
-                    <p></p>
-                    <h3></h3>
-                    <ul>
-                        <li>blah</li>
-                        <li>blah</li>
-                        <li>blah</li>
-                    </ul>
+                    <div class="grid-container">
+                        <div class="text-column">
+                            <p>Daydreaming? A brilliant idea out of the blue?</p>
+                            <h2>Prepare for launch-off today.</h2>
+                            <button class="rounded-button">Launch</button>
+                        </div>
+                        <div class="image-column">
+                            <img src="{{url_for('static', filename='images/thinking-astronaut.jpg')}}" alt="launch image,
+                            astronaut thinking about a cute alien :3">
+                        </div>
+                    </div>
+                    <div class="grid-container">
+                        <div class="image-column 2">
+                            <img src="{{url_for('static', filename='images/moon-astronaut.jpeg')}}" alt="exploration image,
+                            4 panels of blue with some astronaut">
+                        </div>
+                        <div class="text-column 2 align-text-right">
+                            <p>Ready to act? Searching for a faraway passion??</p>
+                            <h2>Hop on a rocket-in-progress..</h2>
+                            <button class="rounded-button" onClick="document.getElementById('explore').scrollIntoView();">Exploration</button>
+                        </div>
                 </div>
             </section>
             <section id="explore">
                 <div class="section-inner">
-                    <h2>Explore other users' pitches!</h2>
-                    <div class="pitch-container"> 
-                        <h2 id="pitch-title">{{ pitch_db.pitches[0].title }}</h2>
-                        <p id="pitch-blurb" class="blurb">{{ pitch_db.pitches[0].blurb }}</p>
-                        <p id="pitch-author" class="author">By: {{ pitch_db.pitches[0].account.full_name }}</p>
+                    <div class="outer-box" id="id1">
 
+<!-- <body> -->
+                            <div class="container">
+                                <img src="{{url_for('static', filename='images/astronaut-icon.png')}}" alt="astronaut icon" style="width:60px;height:60px;" class="astronaut-avatars">
+                                <h3 id="pitch-title">{{ pitches[0].title }}</h3>
+                            </div>
+                        </body>
+                        <div class="big-inner-box" id="pitch-blurb">
+                            What if...<br><br>
+                            {{ pitches[0].blurb }}
+                        </div>
+                        <div class="small-inner-box" id="what-is">
+                            What is it...<br><br>
+                            {{ pitches[0].what_is }}
+                         </div>
+                        <div class="small-inner-box" id="look-for">
+                            Skills/Roles I’m looking for...<br><br>
+                            {{ pitches[0].look_for }}                
+                        </div>
+                        <div class="small-inner-box" id="pitch-author">
+                            About Me<br><br>
+                            {{ pitches[0].account.full_name }}                         
+                        </div>
+                        <div class="grid-container">
+                            <div class="image-column 2">
+                                <button class="rounded-button crash-button" onclick="dislike();">
+                                <img src="{{url_for('static', filename='images/meteor.png')}}" alt="meteor photo" style="width:40px;height:40px;">
+                                <p>Crash</p>
+                            </button>
+                            </div>
+                            <div class="image-column object-center">
+                                <button class="rounded-button launch-button" onclick= "like();" data-profile-id="id1">
+                                <img src="{{url_for('static', filename='images/rocket.png')}}" alt="rocket photo" style="width:40px;height:40px;">
+                                <p>Launch</p>
+                            </button>
+                            
+                            <script>
+                                var currentPitchIndex = 0;
+                                var pitches = {{ pitches|tojson|safe }};
+                                // console.log(pitches.length);
+        
+                                function incrementLikes(pitchTitle) {
+                                    // Send an AJAX request to the server to increment the count
+                                    
+                                    fetch(`/increment_likes/${pitchTitle}`, {
+            method: 'POST',
+        })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log('Success:', data);
+                                        // Optionally update the UI or perform other actions
+                                    })
+                                    .catch((error) => {
+                                        console.log('Error:', error);
+                                    });
+                                }
+        
+                                function incrementDislikes(pitchTitle) {
+                                    // Send an AJAX request to the server to increment the count
+                                    fetch(`/increment_dislikes/${pitchTitle}`, {
+                                        method: 'POST',
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log('Success:', data);
+                                        // Optionally update the UI or perform other actions
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error:', error);
+                                    });
+                                }
+                        
+                                function like() {
+                                    currentPitchIndex++;
+                                    if (currentPitchIndex < pitches.length) {
+                                        document.getElementById('pitch-title').innerText = pitches[currentPitchIndex].title;
+                                        document.getElementById('pitch-blurb').innerText = "What if...\n\n" + pitches[currentPitchIndex].blurb;
+                                        document.getElementById('pitch-author').innerText = "About Me\n\n" + pitches[currentPitchIndex].account.full_name;
+                                        document.getElementById('what-is').innerText = "What is it...\n\n" + pitches[currentPitchIndex].what_is;
+                                        document.getElementById('look-for').innerText = "Skills/Roles I’m looking for...\n\n" + pitches[currentPitchIndex].look_for;
+                                    } else {
+                                        // Handle end of pitches
+                                        alert("No more pitches available");
+                                    }
+                                    incrementLikes(pitches[currentPitchIndex].title)
+                                }
+        
+                                function dislike() {
+                                    currentPitchIndex++;
+                                    if (currentPitchIndex < pitches.length) {
+                                        document.getElementById('pitch-title').innerText = pitches[currentPitchIndex].title;
+                                        document.getElementById('pitch-blurb').innerText = "What if...\n\n" + pitches[currentPitchIndex].blurb;
+                                        document.getElementById('pitch-author').innerText = "About Me\n\n" + pitches[currentPitchIndex].account.full_name;
+                                        document.getElementById('what-is').innerText = "What is it...\n\n" + pitches[currentPitchIndex].what_is;
+                                        document.getElementById('look-for').innerText = "Skills/Roles I’m looking for...\n\n" + pitches[currentPitchIndex].look_for;
+                                    } else {
+                                        // Handle end of pitches
+                                        alert("No more pitches available");
+                                    }
+                                    incrementDislikes(pitches[currentPitchIndex].title)
+                                }
+                            </script>
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" id="next-button" onclick="showNextPitch();">Next Pitch</button>
-                    
-                    <script>
-                        var currentPitchIndex = 0;
-                        var pitches = '{{pitch_db.pitches}}'
-                        console.log(pitch_db.pitches);
-                
-                        function showNextPitch() {
-                            console.log("Button clicked");
-                            currentPitchIndex++;
-                            if (currentPitchIndex < pitches.length) {
-                                document.getElementById('pitch-title').innerText = pitches[currentPitchIndex].title;
-                                document.getElementById('pitch-blurb').innerText = pitches[currentPitchIndex].blurb;
-                                document.getElementById('pitch-author').innerText = "By: " + pitches[currentPitchIndex].account.full_name;
-                            } else {
-                                // Handle end of pitches
-                                alert("No more pitches available");
-                            }
-                        }
-                    </script>
-
                 </div>
-                
+            
             </section>
-            <section id="profile">
+
+            <section id="messages">
                 <div class="section-inner">
-                    <h2>Welcome, {{ user.username }}!</h2>
-                    <p>Your Pitches:</p>
-                    <ul>
-                        {% for pitch in user.my_pitches %}
-                            <li>{{ pitch.blurb }}</li>
-                        {% endfor %}
-                    </ul>
-
-                </div>
-                
+                    <img src="{{url_for('static', filename='images/message.png')}}" alt="messaging plan" style="width:868px;height:668px;" class="messaging-pic">
             </section>
+
+            <section id="rockets">
+                <div class="section-inner">
+                    <img src="{{url_for('static', filename='images/message.png')}}" alt="messaging plan" style="width:868px;height:668px;" class="messaging-pic">
+            </section>
+
+            <section id="favorites">
+                <div class="section-inner">
+                    <h2>Your Liked Projects!</h2>
+            </section>
+
         </main>
         <footer>
             Hack @ Brown 2024
         </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const launchButtons = document.querySelectorAll('.launch-button');
+        
+                launchButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const profileId = button.getAttribute('data-profile-id');
+                        const profileContainer = document.querySelector(`#${profileId}`);
+        
+                        if (profileContainer) {
+                            const clonedProfile = cloneWithoutButtons(profileContainer);
+                            const favoritesSection = document.querySelector('#favorites .section-inner');
+                            favoritesSection.appendChild(clonedProfile);
+                        }
+                    });
+                });
+        
+                function cloneWithoutButtons(element) {
+                    const clone = element.cloneNode(true);
+                    const buttons = clone.querySelectorAll('.launch-button, .crash-button');
+                    
+                    buttons.forEach(button => {
+                        button.parentNode.removeChild(button);
+                    });
+
+                    const newButton = document.createElement('button');
+                    newButton.className = 'rounded-button';
+                    newButton.innerText = 'Black Hole';
+                    const buttonImage = document.createElement('img');
+                    buttonImage.src = "{{url_for('static', filename='images/blackhole.png')}}";  // Replace with the path to your image
+                    buttonImage.alt = 'Black Hole Cartoon Drawing';
+                    buttonImage.style = "width:40px;height:40px;margin-left:10px;"
+                    newButton.addEventListener('click', function () {
+                        // Your new functionality logic here
+                        const favoritesSection = document.querySelector('#favorites .section-inner');
+                        favoritesSection.removeChild(clone);
+                    });
+                    newButton.appendChild(buttonImage);
+                    newButton.style.display = 'flex';
+
+                    // Align items both horizontally and vertically
+                    newButton.style.alignItems = 'center';
+                    newButton.style.justifyContent = 'center';
+
+                    clone.appendChild(newButton);
+
+                    // clone.classList.add('shrink-container');
+        
+                    return clone;
+                }
+            });
+        </script>
     </body>
 </html>

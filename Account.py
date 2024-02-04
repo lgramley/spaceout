@@ -15,8 +15,8 @@ class Account:
 
         self.liked_pitches = [] #pitches you have liked 
         
-    def create_pitch(self, title, blurb):
-        pitch = Pitch(title, blurb)
+    def create_pitch(self, title, blurb, what_is, look_for):
+        pitch = Pitch(title, blurb, what_is, look_for)
 
         pitch.account = self
         self.my_pitches.append(pitch)

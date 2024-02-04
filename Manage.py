@@ -6,9 +6,10 @@ import numpy as np
 from flask import Flask
 
 class ManageGeneral:
-    def __init__(self):
+    def __init__(self, curr_acc):
         self.pitch_db = PitchDatabase()
         self.account_db = AccountDatabase()
+        self.curr_acc = curr_acc
 
     def make_account(self, username, password, full_name, about, contact, past_projects):
         account = Account(username, password, full_name, about, contact, past_projects)

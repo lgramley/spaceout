@@ -1,9 +1,11 @@
 from flask import Flask
 
 class Pitch:
-    def __init__(self, title, blurb): # any args?
+    def __init__(self, title, blurb, what_is, look_for): # any args?
         self.title = title
         self.blurb = blurb
+        self.what_is = what_is
+        self.look_for = look_for
         self.account = None
         # image?
         self.likes = 0

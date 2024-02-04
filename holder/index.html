@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Space Out!</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <style>
+          body {
+            font-family: 'Ubuntu Mono';
+          }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <img src="{{url_for('static', filename='images/spaceOutIcon.png')}}" class="logo-img">
+            <nav>
+                <ul>
+                  <h1>Space Out!</h1>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#explore">Explore</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="hero">
+                <div class="logoImage">
+                  <img src="{{url_for('static', filename='images/spaceOutIcon.png')}}" class="logo-img">
+                </div>
+                <div class="section-inner">
+                    <p style="text-align:left;">Meet people to turn your daydream</p>
+                    <p style="text-align:left;">into a booming enterprise.</p>
+                </div>
+
+            </section>
+            <section id="about">
+                <div class="section-inner">
+                    <h2>About</h2>
+                    <p></p>
+                    <h3></h3>
+                    <ul>
+                        <li>blah</li>
+                        <li>blah</li>
+                        <li>blah</li>
+                    </ul>
+                </div>
+            </section>
+            <section id="explore">
+                <div class="section-inner">
+                    <h2>Explore other users' pitches!</h2>
+                    <div class="pitch-container"> 
+                        <h2 id="pitch-title">{{ pitches[0].title }}</h2>
+                        <p id="pitch-blurb" class="blurb">{{ pitches[0].blurb }}</p>
+                        <p id="pitch-author" class="author">By: {{ pitches[0].account.full_name }}</p>
+
+                    </div>
+                    <button type="button" id="dislike" onclick="dislike();">Crash</button>
+                    <button type="button" id="like" onclick= "like();">Launch</button>
+                    
+                    <script>
+                        var currentPitchIndex = 0;
+                        var pitches = {{ pitches|tojson|safe }};
+                        // console.log(pitches.length);
+
+                        function incrementLikes(pitchTitle) {
+                            // Send an AJAX request to the server to increment the count
+                            
+                            fetch(`/increment_likes/${pitchTitle}`, {
+    method: 'POST',
+})
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Success:', data);
+                                // Optionally update the UI or perform other actions
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                        }
+
+                        function incrementDislikes(pitchTitle) {
+                            // Send an AJAX request to the server to increment the count
+                            fetch(`/increment_dislikes/${pitchTitle}`, {
+                                method: 'POST',
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Success:', data);
+                                // Optionally update the UI or perform other actions
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                        }
+                
+                        function like() {
+                            currentPitchIndex++;
+                            if (currentPitchIndex < pitches.length) {
+                                document.getElementById('pitch-title').innerText = pitches[currentPitchIndex].title;
+                                document.getElementById('pitch-blurb').innerText = pitches[currentPitchIndex].blurb;
+                                document.getElementById('pitch-author').innerText = "By: " + pitches[currentPitchIndex].account.full_name;
+                            } else {
+                                // Handle end of pitches
+                                alert("No more pitches available");
+                            }
+                            incrementLikes(pitches[currentPitchIndex].title)
+                        }
+
+                        function dislike() {
+                            currentPitchIndex++;
+                            if (currentPitchIndex < pitches.length) {
+                                document.getElementById('pitch-title').innerText = pitches[currentPitchIndex].title;
+                                document.getElementById('pitch-blurb').innerText = pitches[currentPitchIndex].blurb;
+                                document.getElementById('pitch-author').innerText = "By: " + pitches[currentPitchIndex].account.full_name;
+                            } else {
+                                // Handle end of pitches
+                                alert("No more pitches available");
+                            }
+                            incrementDislikes(pitches[currentPitchIndex].title)
+                        }
+                    </script>
+
+                </div>
+                
+            </section>
+            <section id="profile">
+                <div class="section-inner">
+                    <h2>Welcome, {{ user.username }}!</h2>
+                    <p>Your Pitches:</p>
+                    <ul>
+                        {% for pitch in user.my_pitches %}
+                            <li>{{ pitch.blurb }}</li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+                
+            </section>
+        </main>
+        <footer>
+            Hack @ Brown 2024
+        </footer>
+    </body>
+</html>
