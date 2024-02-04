@@ -1,0 +1,290 @@
+body {
+    margin: 0;
+    margin-top: 100px;
+    color:antiquewhite;
+}
+
+/*header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    background-color: #3e0071;
+}*/
+
+header {
+    display: flex;
+    background:rgba(255,255,255,0);
+    position:fixed;
+    left:0;
+    top:0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    transition:background 0.5s ease;
+    color: aliceblue;
+}
+
+
+header * {
+    display: inline;
+    height: 50px;
+}
+
+header ul {
+    padding: 0;
+}
+
+header li {
+    margin-left: 20px;
+}
+
+.topnav-right{
+    float:right;
+}
+
+section {
+    height: 110vh;
+    border: 0px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#hero .logo-img {
+    width: 300px;
+    border-radius: 50%;
+    place-items: left;
+}
+
+#explore astronaut-avatar {
+    object-position: 50px 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Add everything below here */
+
+#hero h1 {
+    font-size: 3em;
+    color:aliceblue;
+}
+
+#hero p {
+    font-size: 3em;
+    color:aliceblue;
+}
+
+section h2 {
+    font-size: 2.5em;
+    color:aliceblue;
+}
+
+section h3 {
+    font-size: 1.5em;
+    color:antiquewhite;
+    text-align: right;
+}
+
+section h4 {
+    font-size: 1.1em;
+    color:#25245D;    
+    text-align: left;
+}
+
+section h5 {
+    font-size: 1.1em;
+    color:antiquewhite;
+    text-align: left;
+}
+
+header a {
+    text-decoration: none;
+    color:antiquewhite;
+}
+
+#hero {
+    background-image: linear-gradient(rgba(22, 0, 74, 0.75),rgba(167, 130, 255, 0.75)), url('Photos/homeBackground.png');
+    margin-top:-140px;
+    margin-bottom: 0%;
+    
+}
+
+
+#about {
+    background-image: linear-gradient(rgba(167, 130, 255, 0.75),rgba(17, 0, 94, 0.75)), url('Photos/background2.jpeg')
+    ;
+    padding: 60px;
+}
+
+#explore {
+    background-image: linear-gradient(rgba(17, 0, 94, 0.75),rgba(255,255,255,0.75)), url('Photos/background3.webp');
+}
+
+#profile {
+    background-image: linear-gradient(rgba(255,255,255,0.75),rgba(197, 179, 239, 0.75)), url('Photos/background4.png');
+}
+
+
+
+/* font
+ */
+.cabin-condensed-regular {
+    font-family: "Cabin Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .cabin-condensed-medium {
+    font-family: "Cabin Condensed", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .cabin-condensed-semibold {
+    font-family: "Cabin Condensed", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .cabin-condensed-bold {
+    font-family: "Cabin Condensed", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+/* grid container and column settings
+ */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 50px;
+    margin-top:20px;
+}
+
+.text-column {
+    text-align: left;
+}
+
+.image-column {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.image-column img {
+    max-width: 70%;
+    height: auto;
+}
+
+.text-column-2{
+    text-align: right;
+}
+
+.image-column-2{
+    display:flex;
+    justify-content: flex-start;
+}
+
+.image-column-2 img {
+    max-width: 70%;
+    height: auto;
+}
+
+/* button
+ */
+.rounded-button {
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 10px;
+    background-color: #3498db; 
+    color: #fff; 
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    font-family: 'Ubuntu Mono';
+}
+
+.rounded-button:hover {
+    background-color: #2980b9;
+}
+
+
+/* boxes for exploration page
+ */
+.outer-box {
+    width: 300px;
+    height: 710px; 
+    background-color: #25245D; 
+    color: #25245D;
+    padding: 30px; 
+    border-radius: 10px;
+}
+
+.outer-box-two {
+    width: 300px;
+    height: 710px; 
+    background-color: #9493ee; 
+    color: #9493ee;
+    padding: 30px; 
+    border-radius: 10px;
+}
+
+.big-inner-box {
+    width: 85%; 
+    height: 16%; 
+    background-color: #fff; 
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.small-inner-box {
+    width: 85%; 
+    height: 10%; 
+    background-color: #fff; 
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.smaller-inner-box {
+    width: 85%; 
+    height: 7%; 
+    background-color: #fff; 
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.container {
+    display: flex; 
+    align-items: left;
+}
+
+/* Style for the image */
+.container img {
+    width: 100px; 
+    height: auto; 
+    margin-right: 10px;
+}
+
+.crash-or-launch{
+    display: inline-flex;
+    padding-right: 60px;
+    padding-left:60px;
+    margin-top: 20px;
+    gap: 10px;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Space Out!</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Text and Image Grid</title>
+        <style>
+          body {
+            font-family: 'Ubuntu Mono';
+          }
+        </style>
+        <title>Box Inside a Box</title>
+    </head>
+
+    <body>
+        <header>
+            <img src="Photos/spaceOutIcon.png" class="logo-img">
+            <nav>
+                <h1><li><a href="#hero">Space Out!</a></li></h1>
+                <ul>
+                    <div class ="nav-right">
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#explore">explore</a></li>
+                        <li><a href="#messages">messages</a></li>
+                        <li><a href="#profile">my rockets</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="hero">
+                <div class="logoImage">
+                  <img src="Photos/spaceOutIcon.png" class="logo-img">
+                </div>
+                <div class="section-inner">
+                    <p style="text-align:left;">Meet people to turn your daydream</p>
+                    <p style="text-align:left;">into a booming enterprise.</p>
+                </div>
+
+            </section>
+            <section id="about">
+                <div class="section-inner">
+                    <h2>About</h2>
+                    <div class="grid-container">
+                        <div class="text-column">
+                            <p>Daydreaming? A brilliant idea out of the blue?</p>
+                            <h2>Prepare for launch-off today.</h2>
+                            <button class="rounded-button">Launch</button>
+                        </div>
+                        <div class="image-column">
+                            <img src="Photos/thinking-astronaut.jpg" alt="launch image,
+                            astronaut thinking about a cute alien :3">
+                        </div>
+                    </div>
+                    <div class="grid-container">
+                        <div class="image-column 2">
+                            <img src="Photos/moon-astronaut.png" alt="exploration image,
+                            astronaut sitting on a moon">
+                        </div>
+                        <div class="text-column 2 align-text-right">
+                            <p>Ready to act? Searching for a faraway passion??</p>
+                            <h2>Hop on a rocket-in-progress.</h2>
+                            <button class="rounded-button">Exploration</button>
+                        </div>
+                </div>
+            </section>
+            <section id="explore">
+                <div class="section-inner">
+                    <div class="outer-box">
+                        <body>
+                            <div class="container">
+                                <img src="Photos/astronaut-icon.png" alt="astronaut icon" style="width:60px;height:60px;" class="astronaut-avatars">
+                                <h3>Caitlyn's Idea</h3>
+                            </div>
+                        <div class="big-inner-box">
+                            What if...
+                            <h4>We made a website that matches young professionals together based on interest towards the same dream?</h4>
+                        </div>
+                        <div class="smaller-inner-box">
+                            What is it...
+                            <h4>Website</h4>
+                         </div>
+                        <div class="small-inner-box">
+                            Skills/Roles I’m looking for...
+                            <h4>Co-founder, UI/UX designer, web developer</h4>                
+                        </div>
+                        <div class="smaller-inner-box">
+                            About Me
+                            <h4>Listen Here</h4>
+                        </div>
+                        <div class="crash-or-launch">
+                            <button class="rounded-button">
+                                <img src="Photos/meteor.png" alt="meteor photo" style="width:40px;height:40px;">
+                                <p>Crash</p>
+                            </button>
+                            <button class="rounded-button">
+                                <img src="Photos/rocket.png" alt="rocket photo" style="width:40px;height:40px;">
+                                <p>Launch</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </body>
+            </section>
+            <section id="profile">
+                <div class="section-inner">
+                    <div class="outer-box">
+                        <body>
+                            <div class="container">
+                                <img src="Photos/astronaut-icon.png" alt="astronaut icon" style="width:60px;height:60px;" class="astronaut-avatars">
+                                <h5>Caitlyn's Orbit Profile</h5>
+                            </div>
+                        <div class="small-inner-box">
+                            February 4, 2024
+                            <h4>Space dating app – star signs (or friends)</h4>
+                        </div>
+                        <div class="big-inner-box">
+                            January 29, 2024
+                            <h4>Personalized newsletter (daily/weekly/monthly) generated by ChatGPT sent to email about topics that people are interested in.
+                            </h4>
+                         </div>
+                        <div class="big-inner-box">
+                            January 20, 2024
+                            <h4>Find people at your location to eat/study with. Preferences ranging from minimal convo to making friends. </h4>                
+                        </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            Hack @ Brown 2024
+        </footer>
+    </body>
+</html>
