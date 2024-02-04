@@ -1,3 +1,5 @@
+from flask import Flask
+
 class PitchDatabase:
     def __init__(self):
         self.pitches = []

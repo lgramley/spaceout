@@ -3,6 +3,7 @@ from Account import Account
 from Database import PitchDatabase
 from Database import AccountDatabase
 import numpy as np
+from flask import Flask
 
 class ManageGeneral:
     def __init__(self):

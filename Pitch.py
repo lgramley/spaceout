@@ -1,3 +1,5 @@
+from flask import Flask
+
 class Pitch:
     def __init__(self, title, blurb): # any args?
         self.title = title

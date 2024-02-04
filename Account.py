@@ -1,4 +1,4 @@
-# prompt users to enter account information 
+# prompt users to enter account information
 # which is then stored in a database
 from Pitch import Pitch
 
