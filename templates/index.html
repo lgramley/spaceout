@@ -56,14 +56,17 @@
                         <h2 id="pitch-title">{{ pitch_db.pitches[0].title }}</h2>
                         <p id="pitch-blurb" class="blurb">{{ pitch_db.pitches[0].blurb }}</p>
                         <p id="pitch-author" class="author">By: {{ pitch_db.pitches[0].account.full_name }}</p>
+
                     </div>
                     <button type="button" id="next-button" onclick="showNextPitch();">Next Pitch</button>
                     
                     <script>
                         var currentPitchIndex = 0;
-                        var pitches = pitch_db.pitches
+                        var pitches = '{{pitch_db.pitches}}'
+                        console.log(pitch_db.pitches);
                 
                         function showNextPitch() {
+                            console.log("Button clicked");
                             currentPitchIndex++;
                             if (currentPitchIndex < pitches.length) {
                                 document.getElementById('pitch-title').innerText = pitches[currentPitchIndex].title;
