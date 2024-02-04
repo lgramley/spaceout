@@ -99,7 +99,17 @@ section h3 {
     text-align: right;
 }
 
+section h4 {
+    font-size: 1.1em;
+    color:#25245D;    
+    text-align: left;
+}
 
+section h5 {
+    font-size: 1.1em;
+    color:antiquewhite;
+    text-align: left;
+}
 
 header a {
     text-decoration: none;
@@ -138,6 +148,11 @@ header a {
 
 #rockets {
     background-image: linear-gradient(rgba(17, 0, 94, 0.75),rgba(255,255,255,0.75)), url('/static/images/background2.jpeg');
+    margin-top: 0px;
+    padding:0
+}
+#profile {
+    background-image: linear-gradient(rgba(255,255,255,0.75),rgba(197, 179, 239, 0.75)), url('/static/images/background4.png');
 }
 
 /* font

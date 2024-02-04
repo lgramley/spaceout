@@ -6,7 +6,8 @@ from Manage import ManageGeneral
 
 def model():
     user = Account("mwalsh", "1234", "Mikayla Walsh", "mikayla_walsh@brown.edu", "I have worked in projects beofore specializing in back end development. I also have experience working with machine learning models.", "I am a Junior at Brown studying Computer Science. I am looking for a partner who is determined and passionate.")
-    user.create_pitch("Space Out", "I had an idea for a place when entrepreneuers can come together with their craziest ideas that they come up with when they zone out and let their imagination run free.", "Website", user.about_me)
+    pitch00 = user.create_pitch("Space Out", "I had an idea for a place when entrepreneuers can come together with their craziest ideas that they come up with when they zone out and let their imagination run free.", "Website", user.about_me)
+    pitch000 = user.create_pitch("GreenThumb App", "Imagine an app that helps people discover and care for various plant species. From gardening tips to plant identification, this app will make plant enthusiasts' lives easier.", "Mobile App Development", user.about_me)
 
     manager = ManageGeneral(user)
 
@@ -42,7 +43,7 @@ def model():
     manager.account_db.accounts = [user1, user2, user3, user4, user5, user6, user7, user8, user]
     manager.account_db.usernames = {"john_doe": user1, "alice_smith": user2, "same_jones": user3, "emily_wang": user4, "mwalsh": user, "david_miller": user5, "olivia_garcia": user6, "ryan_carter": user7, "sophie_jackson": user8}
 
-    manager.pitch_db.pitches = [pitch1, pitch2, pitch3, pitch4, pitch5, pitch6, pitch7, pitch8, pitch9, pitch10, pitch11, pitch12]
+    manager.pitch_db.pitches = [pitch1, pitch2, pitch3, pitch4, pitch5, pitch6, pitch7, pitch8, pitch9, pitch10, pitch11, pitch12, pitch00, pitch000]
 
     return manager
 
